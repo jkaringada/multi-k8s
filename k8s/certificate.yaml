@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: jkaringada-com-tls
+spec:
+  secretName: jkaringada-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: jkaringada.com
+  dnsNames:
+    - jkaringada.com
+    - www.jkaringada.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - jkaringada.com
+          - www.jkaringada.com    
